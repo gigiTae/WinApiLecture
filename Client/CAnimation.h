@@ -1,4 +1,5 @@
 #pragma once
+
 class CAnimator;
 class CTexture;
 
@@ -6,8 +7,8 @@ struct tAnimFrm
 {
 	Vec2 vLT;
 	Vec2 vSlice;
+	Vec2 vOffset;
 	float fDuration;
-
 };
 
 class CAnimation
@@ -32,6 +33,8 @@ public:
 		m_fAccTime = 0.f;
 	}
 
+	tAnimFrm& GetFrame(int _iIdx) { return m_vecFrm[_iIdx]; }
+	int GetMaxFrame() { return (int)m_vecFrm.size(); }
 private:
 	void SetName(const wstring& _strName) { m_strName = _strName; }
 

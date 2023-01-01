@@ -47,6 +47,8 @@ void CAnimation::render(HDC _dc)
 
 	CObject* pObj = m_pAnimator->GetObj();
 	Vec2 vPos = pObj->GetPos();
+	vPos += m_vecFrm[m_iCurFrm].vOffset; // Offset 만큼 추가 이동위치
+
 
 	TransparentBlt(_dc
 		, (int)(vPos.x - m_vecFrm[m_iCurFrm].vSlice.x / 2.f)

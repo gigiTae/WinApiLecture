@@ -31,6 +31,12 @@ public:
 	{
 		return Vec2(x + _vother.x, y + _vother.y);
 	}
+	
+	void operator += (Vec2 _vOther)
+	{
+		x += _vOther.x;
+		y += _vOther.y;
+	}
 
 	Vec2 operator -(Vec2 _vother)
 	{
@@ -52,6 +58,13 @@ public:
 		assert(!(0.f == _vother.x || 0.f == _vother.y));
 		return Vec2(x / _vother.x, y / _vother.y);
 	}
+
+	Vec2 operator /(float _f)
+	{
+		assert(!(0.f == _f));
+		return Vec2(x / _f, y / _f);
+	}
+
 
 
 public:
