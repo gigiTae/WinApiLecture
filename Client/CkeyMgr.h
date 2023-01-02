@@ -53,6 +53,9 @@ enum class KEY
 	ENTER,
 	ESC,
 
+	LBTN,
+	RBTN,
+
 	LAST,
 
 };
@@ -69,16 +72,14 @@ class CKeyMgr
 	SINGLE(CKeyMgr);
 private:
 	vector<tKeyInfo> m_vecKey; // 벡터와 이넘클래스, 구조체 이용해서 공간 만드는 방법 다시 숙지하자
+	Vec2             m_vCurMousePos;
 
 public:
 	void init();
 	void update();
 
 public:
-	KEY_STATE GetKeyState(KEY _eKey)
-	{
-		return m_vecKey[(int)_eKey].eState;
-	}
-
+	KEY_STATE GetKeyState(KEY _eKey) { return m_vecKey[(int)_eKey].eState; }
+	Vec2 GetMousePos() { return m_vCurMousePos; }
 };
 

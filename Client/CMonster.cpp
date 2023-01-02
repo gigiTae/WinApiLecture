@@ -4,6 +4,7 @@
 #include "CTimeMgr.h"
 #include "CCollider.h"
 #include "CResMgr.h"
+#include "CCamera.h"
 
 CMonster::CMonster()
 	:m_vCenterPos(Vec2(0.f, 0.f))
@@ -28,23 +29,9 @@ CMonster::~CMonster()
 
 void CMonster::update()
 {
-	return;
-	Vec2 vCurPos = GetPos();
 
-	// 진행 방향으로 시간당 m_fSpeed 만큼 이동
-	vCurPos.x +=  m_fSpeed * m_iDir;
 
-	// 배회 거리 기준점을 넘어섰는지 확인
-	float fDist = abs(m_vCenterPos.x - vCurPos.x) - m_fMaxDistance;
 
-	if(0.f < fDist)
-	{
-		// 방향 변경
-		m_iDir *= -1;
-		vCurPos.x += fDist * m_iDir;
-	}
-
-	SetPos(vCurPos);
 }
 
 void CMonster::render(HDC _dc)
@@ -61,6 +48,7 @@ void CMonster::render(HDC _dc)
 	//    , m_pTex->GetDC()
 	//    , 0, 0, SRCCOPY);
 
+	vPos = CCamera::GetInst()->GetRenderPos(vPos);
 	TransparentBlt(_dc
 		, (int)(vPos.x - (float)(iWidth / 2))
 		, (int)(vPos.y - (float)(iHeight / 2))
@@ -72,6 +60,7 @@ void CMonster::render(HDC _dc)
 
 	component_render(_dc);
 }
+
 void CMonster::OnCollisionEnter(CCollider* _pOther)
 {
 	CObject* pOtherObj =_pOther->GetObj();

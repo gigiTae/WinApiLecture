@@ -37,6 +37,9 @@ int g_arrVK[(int)KEY::LAST] =
 	VK_RETURN,//ENTER,
 	VK_ESCAPE,//ESC,
 
+	VK_LBUTTON, // LBTN
+	VK_RBUTTON, // RBTN
+
 	//LAST,
 };
 
@@ -65,7 +68,7 @@ void CKeyMgr::update()
 	HWND hWnd = GetFocus(); // 현재 포커싱중인 윈도우
 
 	// 윈도우가 포커싱 중일 떄 키 이벤트 동자
-	if(nullptr != hWnd)
+	if (nullptr != hWnd)
 	{
 		for (int i = 0; i < (int)KEY::LAST; ++i)
 		{
@@ -102,6 +105,14 @@ void CKeyMgr::update()
 				m_vecKey[i].bPrevPush = false;
 			}
 		}
+
+		// Mouse 위치 계산
+		POINT ptPos = {};
+		GetCursorPos(&ptPos);
+		ScreenToClient(CCore::GetInst()->GetMainHwnd(), &ptPos);
+
+
+		m_vCurMousePos = Vec2((float)ptPos.x, (float)ptPos.y);
 	}
 	else
 	{
