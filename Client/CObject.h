@@ -47,7 +47,7 @@ private:
 
 public:
 	virtual void update() = 0;
-	virtual void finalupdate() final; // 자식쪽에서 재정의(오버라이딩)가 불가능하다. - final
+	virtual void finalupdate(); // 자식쪽에서 재정의(오버라이딩)가 불가능하다. - final
 	virtual void render(HDC _dc);
 
 	void component_render(HDC _dc);

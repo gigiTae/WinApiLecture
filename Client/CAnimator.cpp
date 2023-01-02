@@ -18,15 +18,19 @@ CAnimator::~CAnimator()
 
 void CAnimator::update()
 {
+
+}
+
+void CAnimator::finalupdate()
+{
 	if (nullptr != m_pCurAnim)
 	{
 		m_pCurAnim->update();
-		
-		if (m_bRepeat && m_pCurAnim->IsFinish()) 
+
+		if (m_bRepeat && m_pCurAnim->IsFinish())
 		{
 			m_pCurAnim->SetFrame(0);
 		}
-	
 	}
 }
 

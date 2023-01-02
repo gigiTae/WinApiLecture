@@ -29,7 +29,7 @@ enum class GROUP_TYPE
 	PROJ_PLAYER,  //플레이어 투사체
 	PROJ_MONSTER, // 몬스터 투사체
 
-
+	UI =31,
 	END = 32,
 };
 
