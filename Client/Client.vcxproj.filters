@@ -95,6 +95,12 @@
     <Filter Include="Engine\04.Object\UI">
       <UniqueIdentifier>{ccaad196-5bb3-4b56-916b-eda70a4d6099}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\UIMgr">
+      <UniqueIdentifier>{c4957bcb-0a83-4ccf-861a-fd496dd45f6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\UI\PanelUI">
+      <UniqueIdentifier>{9cee8955-1a7b-4e88-931e-4b36de222fcb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -194,6 +200,12 @@
     <ClInclude Include="CUI.h">
       <Filter>Engine\04.Object\UI</Filter>
     </ClInclude>
+    <ClInclude Include="CUIMgr.h">
+      <Filter>Engine\03. Manager\UIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CPanelUI.h">
+      <Filter>Engine\04.Object\UI\PanelUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -287,6 +299,12 @@
     </ClCompile>
     <ClCompile Include="CUI.cpp">
       <Filter>Engine\04.Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIMgr.cpp">
+      <Filter>Engine\03. Manager\UIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CPanelUI.cpp">
+      <Filter>Engine\04.Object\UI\PanelUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
