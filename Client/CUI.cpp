@@ -4,10 +4,13 @@
 #include "CkeyMgr.h"
 #include "CCamera.h"
 
+#include "SelectGDI.h"
+
 CUI::CUI(bool _bCamAff)
 	: m_ParentUI(nullptr)
 	, m_bCamAffected(_bCamAff)
 	, m_bMouseOn(false)
+	, m_bLbtnDown(false)
 {
 }
 
@@ -51,11 +54,25 @@ void CUI::render(HDC _dc)
 		vPos = CCamera::GetInst()->GetRenderPos(vPos);
 	}
 
+	if (m_bLbtnDown)
+	{
+	SelectGDI select(_dc, PEN_TYPE::GREEN);
+
 	Rectangle(_dc
-		,(int)( vPos.x )
-		,(int)( vPos.y )
-		,(int)( vPos.x +vScale.x)
-		,(int)( vPos.y +vScale.y));
+		, (int)(vPos.x)
+		, (int)(vPos.y)
+		, (int)(vPos.x + vScale.x)
+		, (int)(vPos.y + vScale.y));
+
+	}
+	else {
+		Rectangle(_dc
+			, (int)(vPos.x)
+			, (int)(vPos.y)
+			, (int)(vPos.x + vScale.x)
+			, (int)(vPos.y + vScale.y));
+	}
+
 
 	// child ui render
 	render_child(_dc);

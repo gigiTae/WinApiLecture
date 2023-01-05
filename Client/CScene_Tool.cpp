@@ -29,15 +29,17 @@ void CScene_Tool::Enter()
 	Vec2 vResolution = CCore::GetInst()->GetResolution();
 
 	CUI* pUI = new CUI(false);
+	pUI->SetName(L"ParentUI");
 	pUI->SetScale(Vec2(500.f, 300.f));
 	pUI->SetPos(Vec2(vResolution.x-pUI->GetScale().x, 0.f));
 
 
-	//CUI* pChildUI = new CUI;
-	//pChildUI->SetScale(Vec2(100.f, 30.f));
-	//pChildUI->SetPos(Vec2(0.f, 0.f));
+	CUI* pChildUI = new CUI(false);
+	pChildUI->SetName(L"ChildUI");
+	pChildUI->SetScale(Vec2(100.f, 30.f));
+	pChildUI->SetPos(Vec2(0.f, 0.f));
 
-	//pUI->AddChild(pChildUI);	
+	pUI->AddChild(pChildUI);	
 
 	AddObject(pUI, GROUP_TYPE::UI);
 
