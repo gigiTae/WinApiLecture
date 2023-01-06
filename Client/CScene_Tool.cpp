@@ -5,6 +5,7 @@
 #include "CSceneMgr.h"
 #include "CTile.h"
 #include "CSceneMgr.h"
+#include "CPathMgr.h"
 
 #include "CCore.h"
 #include "CResMgr.h"
@@ -36,7 +37,7 @@ void CScene_Tool::Enter()
 
 	CUI* pPanelUI = new CPanelUI;
 	pPanelUI->SetName(L"ParentUI");
-	pPanelUI->SetScale(Vec2(500.f, 300.f));
+	pPanelUI->SetScale(Vec2(300.f, 150.f));
 	pPanelUI->SetPos(Vec2(vResolution.x-pPanelUI->GetScale().x, 0.f));
 
 
@@ -50,11 +51,11 @@ void CScene_Tool::Enter()
 
 	AddObject(pPanelUI, GROUP_TYPE::UI);
 
-	CUI* pClonePannel = pPanelUI->Clone();
-	pClonePannel->SetPos(pClonePannel ->GetPos() + Vec2(-300.f, 0.f));
-	AddObject(pClonePannel, GROUP_TYPE::UI);
+	//CUI* pClonePannel = pPanelUI->Clone();
+	//pClonePannel->SetPos(pClonePannel ->GetPos() + Vec2(-300.f, 0.f));
+	//AddObject(pClonePannel, GROUP_TYPE::UI);
 
-	m_pUI = pClonePannel;
+	//m_pUI = pClonePannel;
 
 	// Camera Look 지정
 	CCamera::GetInst()->SetLookAt(vResolution / 2.f);
@@ -77,6 +78,10 @@ void CScene_Tool::update()
 		SaveTile(L"tile\\Test.tile");
 	}
 
+	if (KEY_TAP(KEY::CTRL))
+	{
+		LoadTile(L"tile\\Test.tile");
+	}
 
 }
 
@@ -109,8 +114,27 @@ void CScene_Tool::SetTileIdx()
 
 void CScene_Tool::SaveTile(const wstring& _strRelativePath)
 {
+	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+	strFilePath += _strRelativePath;
+
+	// 커널 오브젝트
 	FILE* pFile = nullptr;
-	//_wfopen_s();
+	
+	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
+
+	assert(pFile);
+	
+	// 데이터 저장
+	UINT xCount = GetTileX();
+	UINT yCount = GetTileY();
+
+	fwrite(&xCount, sizeof(UINT), 1, pFile);
+	fwrite(&yCount, sizeof(UINT), 1, pFile);
+
+
+
+	fclose(pFile);
+
 }
 
 
