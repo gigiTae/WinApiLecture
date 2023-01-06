@@ -3,7 +3,7 @@
 class CUI :
     public CObject
 {
-
+    //;
 private:
     vector<CUI*>   m_vecChildUI;
     CUI*           m_ParentUI;
