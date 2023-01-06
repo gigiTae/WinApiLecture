@@ -104,3 +104,7 @@ void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 		}
 	}
 }
+
+void CScene::LoadTile(const wstring& _strRelativePath)
+{
+}

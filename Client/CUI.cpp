@@ -14,9 +14,22 @@ CUI::CUI(bool _bCamAff)
 {
 }
 
+CUI::CUI(const CUI& _origin)
+	: CObject(_origin)
+	, m_ParentUI(nullptr)
+	, m_bCamAffected(_origin.m_bCamAffected)
+	, m_bMouseOn(false)
+	, m_bLbtnDown(false)
+{
+	for (size_t i = 0; i < _origin.m_vecChildUI.size(); ++i)
+	{
+		AddChild(_origin.m_vecChildUI[i]->Clone());
+	}
+}
+
 CUI::~CUI()
 {
-	Safe_Delete_Vec(m_vecChildUI);
+	Safe_Delete_Vec(m_vecChildUI);  
 }
 
 void CUI::update()
@@ -126,7 +139,8 @@ void CUI::MouseOnCheck()
 
 void CUI::MouseOn()
 {
-}
+	
+} 
 
 void CUI::MouseLbtnDown()
 {
