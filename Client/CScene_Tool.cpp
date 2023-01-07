@@ -45,11 +45,11 @@ void CScene_Tool::Enter()
 	pBtnUI->SetName(L"ChildUI");
 	pBtnUI->SetScale(Vec2(100.f, 30.f));
 	pBtnUI->SetPos(Vec2(0.f, 0.f));
-	pBtnUI->SetClikedCallBack(ChangeScsene,0 ,0);
-
+	((CBtnUI*)pBtnUI)->SetClikedCallBack(this,(SCENE_MEMFUNC)&CScene_Tool::SaveTileData);
 	pPanelUI ->AddChild(pBtnUI);
 
 	AddObject(pPanelUI, GROUP_TYPE::UI);
+
 
 	//CUI* pClonePannel = pPanelUI->Clone();
 	//pClonePannel->SetPos(pClonePannel ->GetPos() + Vec2(-300.f, 0.f));
@@ -72,15 +72,10 @@ void CScene_Tool::update()
 
 	SetTileIdx();
 
-	if (KEY_TAP(KEY::LSHIFT))
-	{
-		//CUIMgr::GetInst()->SetFocusedUI(m_pUI);
-		SaveTile(L"tile\\Test.tile");
-	}
 
 	if (KEY_TAP(KEY::CTRL))
 	{
-		LoadTile(L"tile\\Test.tile");
+		LoadTileData();
 	}
 
 }
@@ -112,15 +107,41 @@ void CScene_Tool::SetTileIdx()
 
 }
 
-void CScene_Tool::SaveTile(const wstring& _strRelativePath)
+void CScene_Tool::SaveTileData()
 {
-	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
-	strFilePath += _strRelativePath;
+	wchar_t szName[256] = {};
 
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = CCore::GetInst()->GetMainHwnd();
+	ofn.lpstrFile = szName;
+	ofn.nMaxFile = sizeof(szName);
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";
+	ofn.nFilterIndex = 0;
+	ofn.lpstrFileTitle = nullptr;
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTileFolder = CPathMgr::GetInst()->GetContentPath();
+	strTileFolder += L"tile";
+
+	ofn.lpstrInitialDir = strTileFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+	
+	// Modal
+	if (GetSaveFileName(&ofn))
+	{
+		SaveTile(szName);
+	}
+
+}
+
+void CScene_Tool::SaveTile(const wstring& _strFilePath)
+{
 	// 커널 오브젝트
 	FILE* pFile = nullptr;
 	
-	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
+	_wfopen_s(&pFile, _strFilePath.c_str(), L"wb");
 
 	assert(pFile);
 	
@@ -131,10 +152,44 @@ void CScene_Tool::SaveTile(const wstring& _strRelativePath)
 	fwrite(&xCount, sizeof(UINT), 1, pFile);
 	fwrite(&yCount, sizeof(UINT), 1, pFile);
 
+	const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
 
+	for (size_t i = 0; i < vecTile.size(); ++i)
+	{
+		((CTile*)vecTile[i])->Save(pFile);
+	}
 
 	fclose(pFile);
 
+}
+
+void CScene_Tool::LoadTileData()
+{
+	wchar_t szName[256] = {};
+
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = CCore::GetInst()->GetMainHwnd();
+	ofn.lpstrFile = szName;
+	ofn.nMaxFile = sizeof(szName);
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";
+	ofn.nFilterIndex = 0;
+	ofn.lpstrFileTitle = nullptr;
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTileFolder = CPathMgr::GetInst()->GetContentPath();
+	strTileFolder += L"tile";
+
+	ofn.lpstrInitialDir = strTileFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	// Modal
+	if (GetOpenFileName(&ofn))
+	{
+		wstring strRelativePath = CPathMgr::GetInst()->GetRelativePath(szName);
+		LoadTile(strRelativePath);
+	}
 }
 
 

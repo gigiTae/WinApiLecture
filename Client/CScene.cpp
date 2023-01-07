@@ -86,6 +86,9 @@ void CScene::DeleteAll()
 
 void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 {
+	DeleteGroup(GROUP_TYPE::TILE);
+
+
 	m_iTileX = _iXCount;
 	m_iTileY = _iYCount;
 	CTexture* pTileTex = CResMgr::GetInst()->LoadTexture(L"Tile", L"texture\\maptile.bmp");
@@ -117,14 +120,24 @@ void CScene::LoadTile(const wstring& _strRelativePath)
 
 	assert(pFile);
 
+	// 타일 가로세로 개수 불러오기
 	UINT xCount = 0;
 	UINT yCount = 0;
 
 	fread(&xCount, sizeof(UINT), 1, pFile);
 	fread(&yCount, sizeof(UINT), 1, pFile);
 
+	// 불러오는 개수에 맞게 EmtyTile 만들어두기
 	CreateTile(xCount, yCount);
+
+	// 만들어진 타일 개별로 필요한 정보를 불러오기
+	const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
+
+	for (size_t i = 0; i < vecTile.size(); ++i)
+	{
+		((CTile*)vecTile[i])->Load(pFile);
+	}
 
 	fclose(pFile);
 
-}
+ }
