@@ -19,13 +19,13 @@ CPlayer::CPlayer()
 
 	CreateCollider();
 	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
-	GetCollider()->SetScale(Vec2(25.f, 50.f));
+	GetCollider()->SetScale(Vec2(25.f, 20.f));
 	
 	// Texture 로딩하기
-	CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\movement.bmp");
+	CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\PlayerAnimation.bmp");
 	
 	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"WALK_DOWN", pTex, Vec2(0.f, 0.f), Vec2(64.f, 64.f), Vec2(64.f, 0.f), 0.1f, 9);
+	GetAnimator()->CreateAnimation(L"WALK_DOWN", pTex, Vec2(0.f, 0.f), Vec2(64.f, 64.f), Vec2(64.f, 0.f), 0.1f, 3);
 	GetAnimator()->Play(L"WALK_DOWN", true);
 
 	CAnimation* pAnim = GetAnimator()->FindAnimation(L"WALK_DOWN");
@@ -45,19 +45,19 @@ void CPlayer::update()
 
 	if (KEY_HOLD(KEY::W))
 	{
-		vPos.y -= 400.f * fDT;
+		vPos.y -= 200.f * fDT;
 	}
 	if (KEY_HOLD(KEY::S))
 	{
-		vPos.y += 400.f * fDT;
+		vPos.y += 200.f * fDT;
 	}
 	if (KEY_HOLD(KEY::A))
 	{
-		vPos.x -= 400.f * fDT;
+		vPos.x -= 200.f * fDT;
 	}
 	if (KEY_HOLD(KEY::D))
 	{
-		vPos.x += 400.f * fDT;
+		vPos.x += 200.f * fDT;
 	}
 	if (KEY_TAP(KEY::SPACE))
 	{

@@ -164,6 +164,7 @@
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
+    <ClInclude Include="CTileUI.h" />
     <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="CUI.h" />
     <ClInclude Include="CUIMgr.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
+    <ClCompile Include="CTileUI.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="CUI.cpp" />
     <ClCompile Include="CUIMgr.cpp" />

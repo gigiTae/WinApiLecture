@@ -20,6 +20,11 @@ public:
     {
         ++m_iImgIdx;
     }
+
+    void SetImgIdx(int _imgidx)
+    {
+        m_iImgIdx = _imgidx;
+    }
 private:
     virtual void update();
     virtual void render(HDC _dc);

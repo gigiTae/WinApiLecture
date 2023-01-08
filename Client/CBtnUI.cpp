@@ -47,3 +47,5 @@ void CBtnUI::SetClikedCallBack(CScene* _pScene, SCENE_MEMFUNC _pSceneFunc)
 		m_pSceneInst = _pScene;
 		m_pSceneFunc = _pSceneFunc;
 }
+
+

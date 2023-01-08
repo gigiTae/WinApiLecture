@@ -88,11 +88,12 @@ void CScene_Start::Enter()
 	}
 
 	// 타일 로딩
-	//LoadTile(L"Tile\\Start.tile");
+	LoadTile(L"Tile\\STAGE");
 
 	// 충돌 지정
 	// Player 그룹과 Monster 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::TILE);
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
 
 	// Camera Look 지정

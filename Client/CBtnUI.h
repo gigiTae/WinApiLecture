@@ -7,7 +7,7 @@
 typedef void(*BTN_FUNC) (DWORD_PTR, DWORD_PTR);
 
 typedef void(CScene::*SCENE_MEMFUNC)(void);
-typedef void(CObject::* OBJECT_MEMFUNC)(void);
+typedef void(CObject::*OBJECT_MEMFUNC)(void);
 
 
 class CBtnUI :

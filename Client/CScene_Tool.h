@@ -8,7 +8,7 @@ class CScene_Tool :
 {
 private:
     CUI* m_pUI;
-
+    int ImgIdx;
 
 public:
     virtual void update();
@@ -17,10 +17,11 @@ public:
 
 public:
     void SetTileIdx();
+    void SetImgIdx(int _imgidx);
 
     void SaveTileData();
     void SaveTile(const wstring& _strFilePath);
-
+    
     void LoadTileData();
 
 public:

@@ -15,11 +15,13 @@
 #include "CPanelUI.h"
 #include "CBtnUI.h"
 #include "CUIMgr.h"
+#include "CTileUI.h"
 
 void ChangeScsene(DWORD_PTR, DWORD_PTR);
 
 CScene_Tool::CScene_Tool()
 	:m_pUI(nullptr)
+	,ImgIdx(0)
 {
 }
 
@@ -37,16 +39,24 @@ void CScene_Tool::Enter()
 
 	CUI* pPanelUI = new CPanelUI;
 	pPanelUI->SetName(L"ParentUI");
-	pPanelUI->SetScale(Vec2(300.f, 150.f));
+	pPanelUI->SetScale(Vec2(300.f, 300.f));
 	pPanelUI->SetPos(Vec2(vResolution.x-pPanelUI->GetScale().x, 0.f));
 
 
 	CBtnUI* pBtnUI = new CBtnUI;
 	pBtnUI->SetName(L"ChildUI");
 	pBtnUI->SetScale(Vec2(100.f, 30.f));
-	pBtnUI->SetPos(Vec2(0.f, 0.f));
+	pBtnUI->SetPos(Vec2(10.f, 10.f));
 	((CBtnUI*)pBtnUI)->SetClikedCallBack(this,(SCENE_MEMFUNC)&CScene_Tool::SaveTileData);
 	pPanelUI ->AddChild(pBtnUI);
+
+
+	CTileUI* pTileUI = new CTileUI;
+	pTileUI->SetName(L"TileUI");
+	pTileUI->SetScale(Vec2(192.f, 192.f));
+	pTileUI->SetPos(Vec2(50.f, 100.f));
+	pTileUI->SetToolScene(this);
+	pPanelUI->AddChild(pTileUI);
 
 	AddObject(pPanelUI, GROUP_TYPE::UI);
 
@@ -82,7 +92,7 @@ void CScene_Tool::update()
 
 void CScene_Tool::SetTileIdx()
 {
-	if (KEY_TAP(KEY::LBTN))
+	if (KEY_TAP(KEY::A))
 	{
 		Vec2 vMousePos = MOUSE_POS;
 		vMousePos = CCamera::GetInst()->GetRealPos(vMousePos);
@@ -100,11 +110,16 @@ void CScene_Tool::SetTileIdx()
 		UINT iIdx = iRow * iTileX + iCol;
 
 		const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
-		((CTile*)vecTile[iIdx])->AddImgIdx();
+		((CTile*)vecTile[iIdx])->SetImgIdx(ImgIdx);
 	}
 
 
 
+}
+
+void CScene_Tool::SetImgIdx(int _imgidx)
+{
+		ImgIdx = _imgidx;
 }
 
 void CScene_Tool::SaveTileData()

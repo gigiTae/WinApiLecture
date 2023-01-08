@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CTile.h"
 
+#include "CCollider.h"
 #include "CTexture.h"
 
 CTile::CTile()
@@ -8,6 +9,10 @@ CTile::CTile()
 	,m_iImgIdx(0)
 {
 	SetScale(Vec2(TILE_SIZE, TILE_SIZE));
+
+	//CreateCollider();
+	//GetCollider()->SetOffsetPos(Vec2(32.f, 32.f));
+	//GetCollider()->SetScale(Vec2(64.f, 64.f));
 }
 
 CTile::~CTile()
@@ -30,7 +35,7 @@ void CTile::render(HDC _dc)
 
 
 	UINT iCurRow = (UINT)m_iImgIdx / iMaxCol;
-	UINT iCurCol = (UINT)m_iImgIdx & iMaxCol;
+	UINT iCurCol = (UINT)m_iImgIdx % iMaxCol;
 
 	// 이미지 범위를 벗어난 인덱스
 	if (iMaxRow <= iCurRow)
@@ -49,7 +54,7 @@ void CTile::render(HDC _dc)
 		, iCurRow * TILE_SIZE
 		, SRCCOPY);
 
-
+	component_render(_dc);
 }
 
 void CTile::Save(FILE* _pFile)
