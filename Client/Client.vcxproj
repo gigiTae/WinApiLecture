@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AI.h" />
     <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CBtnUI.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="CCollisionMgr.h" />
     <ClInclude Include="CCore.h" />
     <ClInclude Include="CEventMgr.h" />
+    <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CkeyMgr.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="CMissile.h" />
@@ -162,10 +164,12 @@
     <ClInclude Include="CScene_Start.h" />
     <ClInclude Include="CScene_Tool.h" />
     <ClInclude Include="CSound.h" />
+    <ClInclude Include="CState.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
     <ClInclude Include="CTileUI.h" />
     <ClInclude Include="CTimeMgr.h" />
+    <ClInclude Include="CTraceState.h" />
     <ClInclude Include="CUI.h" />
     <ClInclude Include="CUIMgr.h" />
     <ClInclude Include="define.h" />
@@ -178,6 +182,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI.cpp" />
     <ClCompile Include="CAnimation.cpp" />
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CBtnUI.cpp" />
@@ -186,6 +191,7 @@
     <ClCompile Include="CCollisionMgr.cpp" />
     <ClCompile Include="CCore.cpp" />
     <ClCompile Include="CEventMgr.cpp" />
+    <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CkeyMgr.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
@@ -200,10 +206,12 @@
     <ClCompile Include="CScene_Start.cpp" />
     <ClCompile Include="CScene_Tool.cpp" />
     <ClCompile Include="CSound.cpp" />
+    <ClCompile Include="CState.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTileUI.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
+    <ClCompile Include="CTraceState.cpp" />
     <ClCompile Include="CUI.cpp" />
     <ClCompile Include="CUIMgr.cpp" />
     <ClCompile Include="func.cpp" />

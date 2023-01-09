@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CMonster.h"
 
+#include "AI.h"
+
 #include "CTimeMgr.h"
 #include "CCollider.h"
 #include "CResMgr.h"
@@ -24,14 +26,19 @@ CMonster::CMonster()
 
 CMonster::~CMonster()
 {
-	
+	if (nullptr != m_pAI)
+		delete m_pAI;
+}
+
+void CMonster::SetAI(AI* _AI)
+{
+	m_pAI = _AI;
+	m_pAI->m_pOwner = this;
 }
 
 void CMonster::update()
 {
-
-
-
+	m_pAI->update();
 }
 
 void CMonster::render(HDC _dc)

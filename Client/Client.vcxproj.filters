@@ -140,9 +140,6 @@
     <ClInclude Include="CkeyMgr.h">
       <Filter>Engine\03. Manager\KeyMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CScene.h">
-      <Filter>Engine\05.Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CSceneMgr.h">
       <Filter>Engine\03. Manager\SceneMgr</Filter>
     </ClInclude>
@@ -217,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="CTileUI.h">
       <Filter>Engine\04.Object\UI\TileUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>Engine\06.Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
