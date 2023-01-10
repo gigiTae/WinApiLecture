@@ -1,6 +1,15 @@
 #pragma once
 #include "CObject.h"
-#include "CTexture.h"
+class CTextrue;
+
+struct tMonInfo
+{
+    float   m_fHp;         // 체력
+    float   m_fSpeed;      // 속도
+    float   m_fRecogRange; // 인지 범위 
+    float   m_fAttRange;   // 공격 범위
+    float   m_fAtt;        // 공격력
+};
 
 class AI;
 
@@ -9,17 +18,18 @@ class CMonster :
 {
 private:
     CTexture* m_pTex;
-    Vec2      m_vCenterPos;
-
-    float     m_fSpeed; 
-    int       m_HP;
+    tMonInfo  m_tInfo;
     AI*       m_pAI;
 
 public:
-    float GetSpeed() { return m_fSpeed; }
-    void  SetSpeed(float _f) { m_fSpeed = _f; }
-
+    float GetSpeed() { return m_tInfo.m_fSpeed; }
+    void  SetSpeed(float _f) { m_tInfo.m_fSpeed = _f; }
     void SetAI(AI* _AI);
+    const tMonInfo& GetInfo() { return m_tInfo; }
+
+
+private:
+    void SetMonInfo(const tMonInfo& _info) { m_tInfo = _info; }
 
 public:
     virtual void update();
@@ -33,5 +43,7 @@ public:
 public:
     CMonster();
     ~CMonster();
+
+    friend class CMonFactory;
 };
 

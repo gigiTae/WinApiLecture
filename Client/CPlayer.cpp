@@ -13,6 +13,8 @@
 #include "CAnimator.h"
 #include "CAnimation.h"
 
+#include "CRigidBody.h"
+
 CPlayer::CPlayer()
 	: m_pTex(nullptr)
 {
@@ -22,6 +24,8 @@ CPlayer::CPlayer()
 	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
 	GetCollider()->SetScale(Vec2(25.f, 20.f));
 	
+	CreateRigidBody();
+
 	//// Texture 로딩하기
 	//CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\PlayerAnimation.bmp");
 	//
@@ -42,30 +46,29 @@ CPlayer::~CPlayer()
 
 void CPlayer::update()
 {
-	Vec2 vPos = GetPos();
+	CRigidBody* pRigid = GetRigidBody();
 
 	if (KEY_HOLD(KEY::W))
 	{
-		vPos.y -= 200.f * fDT;
+		pRigid->AddForce(Vec2 (0.f, -200.f));
 	}
 	if (KEY_HOLD(KEY::S))
 	{
-		vPos.y += 200.f * fDT;
+		pRigid->AddForce(Vec2(0.f, 200.f));
 	}
 	if (KEY_HOLD(KEY::A))
 	{
-		vPos.x -= 200.f * fDT;
+		pRigid->AddForce(Vec2(-200.f, 0.f));
 	}
 	if (KEY_HOLD(KEY::D))
 	{
-		vPos.x += 200.f * fDT;
+		pRigid->AddForce(Vec2(200.f, 0.f));
 	}
 	if (KEY_TAP(KEY::SPACE))
 	{
 		CreateMissile();
 	}
 
-	SetPos(vPos); // 상속을 받았으므로 수정해주기 위해서 함수를 호출한다.
 
 	GetAnimator()->update();
 }

@@ -107,6 +107,33 @@
     <Filter Include="Engine\04.Object\UI\TileUI">
       <UniqueIdentifier>{e6fdb20b-b6bf-443a-a965-93ea416bde7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\08.Module\AI">
+      <UniqueIdentifier>{7ad66cca-25d7-41f3-856c-170c47b059d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08.Module\AI\State">
+      <UniqueIdentifier>{fe6627d8-d5fa-4d80-983b-3736ee16dc90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08.Module\AI\State\IDLE">
+      <UniqueIdentifier>{82181103-8b2c-4452-806a-08a2ebbb5214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08.Module\AI\State\Attack">
+      <UniqueIdentifier>{f6c8b71f-d044-420b-841c-f83b26271481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08.Module\AI\State\Dead">
+      <UniqueIdentifier>{fe7e5a05-8832-4362-9ad9-b8dd5853138b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08.Module\AI\State\Trace">
+      <UniqueIdentifier>{cb5ac91e-2f4a-40a3-bce4-98499f5c23c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09.Factory">
+      <UniqueIdentifier>{5275256b-7fb6-4136-8a65-202ba61bd74a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09.Factory\MonFactory">
+      <UniqueIdentifier>{e5ce1766-5c60-4855-abf5-c992149b2682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07.Component\RigidBody">
+      <UniqueIdentifier>{8dfa863b-37e6-449c-bed3-b8f8e0782bd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -215,8 +242,26 @@
     <ClInclude Include="CTileUI.h">
       <Filter>Engine\04.Object\UI\TileUI</Filter>
     </ClInclude>
+    <ClInclude Include="CState.h">
+      <Filter>Engine\08.Module\AI\State</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>Engine\08.Module\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="CIdleState.h">
+      <Filter>Engine\08.Module\AI\State\IDLE</Filter>
+    </ClInclude>
+    <ClInclude Include="CTraceState.h">
+      <Filter>Engine\08.Module\AI\State\Trace</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonFactory.h">
+      <Filter>Engine\09.Factory\MonFactory</Filter>
+    </ClInclude>
     <ClInclude Include="CScene.h">
-      <Filter>Engine\06.Resource</Filter>
+      <Filter>Engine\05.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CRigidBody.h">
+      <Filter>Engine\07.Component\RigidBody</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +368,24 @@
     </ClCompile>
     <ClCompile Include="CTileUI.cpp">
       <Filter>Engine\04.Object\UI\TileUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CState.cpp">
+      <Filter>Engine\08.Module\AI\State</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.cpp">
+      <Filter>Engine\08.Module\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CIdleState.cpp">
+      <Filter>Engine\08.Module\AI\State\IDLE</Filter>
+    </ClCompile>
+    <ClCompile Include="CTraceState.cpp">
+      <Filter>Engine\08.Module\AI\State\Trace</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonFactory.cpp">
+      <Filter>Engine\09.Factory\MonFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="CRigidBody.cpp">
+      <Filter>Engine\07.Component\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

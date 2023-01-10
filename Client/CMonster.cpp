@@ -7,14 +7,12 @@
 #include "CCollider.h"
 #include "CResMgr.h"
 #include "CCamera.h"
+#include "CTexture.h"
 
 CMonster::CMonster()
-	:m_vCenterPos(Vec2(0.f, 0.f))
-	, m_fSpeed(100.f)
-	, m_fMaxDistance(50.f)
-	, m_iDir(1)
-	, m_HP(5)
-	,m_pTex(nullptr)
+	:m_pTex(nullptr)
+	, m_tInfo{}
+	, m_pAI(nullptr)
 {
 	m_pTex = CResMgr::GetInst()->LoadTexture(L"BossTex", L"texture\\boss.bmp");
 
@@ -74,8 +72,5 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
 
 	if (pOtherObj->GetName() == L"Missile_Player")
 	{
-		--m_HP;
-		if (0 >= m_HP)
-			DeleteObject(this);
 	}
 }

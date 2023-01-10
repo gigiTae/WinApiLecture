@@ -5,7 +5,12 @@
 #include "CSceneMgr.h"
 #include "CScene.h"
 
+#include "AI.h"
+#include "CState.h"
+
 #include "CUIMgr.h"
+
+
 
 
 CEventMgr::CEventMgr()
@@ -81,6 +86,16 @@ void CEventMgr::Excute(const tEvent& _eve)
 	}
 
 		break;
+	case EVENT_TYPE::CHANGE_AI_STATE:
+	{
+		// iParam : AI
+		// wParam : Nex
+		AI* pAI = (AI*)_eve.lParam;
+		MON_STATE eNextState = (MON_STATE)_eve.wParam;
+		pAI->ChangeState(eNextState);
+
+		break;
+	}
 	}
 
 }
