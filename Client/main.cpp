@@ -27,7 +27,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     // 메모리 릭(누수) 체크
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    //_CrtSetBreakAlloc(287);
+   // _CrtSetBreakAlloc(209);
     
 
 
@@ -58,7 +58,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // Core 초기화
-    if (FAILED(CCore::GetInst()->init(g_hWnd, POINT{1280,760})))
+    if (FAILED(CCore::GetInst()->init(g_hWnd, POINT{1920,1080})))
     {
         MessageBox(nullptr, L"Core 객체 초기화 실패", L"ERROR", MB_OK);
 

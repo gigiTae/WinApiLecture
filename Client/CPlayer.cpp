@@ -52,18 +52,40 @@ void CPlayer::update()
 	{
 		pRigid->AddForce(Vec2 (0.f, -200.f));
 	}
+	if (KEY_TAP(KEY::W))
+	{
+		pRigid->AddVelocity(Vec2(0.f, -100.f));
+	}
+
 	if (KEY_HOLD(KEY::S))
 	{
 		pRigid->AddForce(Vec2(0.f, 200.f));
 	}
+	if (KEY_TAP(KEY::S))
+	{
+		pRigid->AddVelocity(Vec2(0.f, 100.f));
+	}
+
 	if (KEY_HOLD(KEY::A))
 	{
-		pRigid->AddForce(Vec2(-200.f, 0.f));
+		pRigid->AddForce(Vec2(-100.f, 0.f));
 	}
+	if (KEY_TAP(KEY::A))
+	{
+		pRigid->AddVelocity(Vec2(-100.f, 0.f));
+	}
+
 	if (KEY_HOLD(KEY::D))
 	{
 		pRigid->AddForce(Vec2(200.f, 0.f));
 	}
+	if (KEY_TAP(KEY::D))
+	{
+		pRigid->AddVelocity(Vec2(100.f, 0.f));
+	}
+
+
+
 	if (KEY_TAP(KEY::SPACE))
 	{
 		CreateMissile();
