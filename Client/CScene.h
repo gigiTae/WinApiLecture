@@ -28,6 +28,7 @@ public:
 
 	CObject* GetPlayer() { return m_pPlayer; }
 
+	virtual void start();
 	virtual void update();
 	virtual void finalupdate();
 	virtual void render(HDC _dc);

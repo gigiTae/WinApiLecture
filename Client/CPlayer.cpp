@@ -12,8 +12,10 @@
 #include "CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
+#include "CGravity.h"
 
 #include "CRigidBody.h"
+
 
 CPlayer::CPlayer()
 	: m_pTex(nullptr)
@@ -25,8 +27,8 @@ CPlayer::CPlayer()
 	//m_pTex = CResMgr::GetInst()->LoadTexture(L"Player1Tex", L"texture\\c1.bmp");
 
 	CreateCollider();
-	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
-	GetCollider()->SetScale(Vec2(25.f, 20.f));
+	GetCollider()->SetOffsetPos(Vec2(0.f, 24.f));
+	GetCollider()->SetScale(Vec2(32.f, 28.f));
 	
 	CreateRigidBody();
 
@@ -41,6 +43,8 @@ CPlayer::CPlayer()
 	GetAnimator()->CreateAnimation(L"WALK_UP", pTex, Vec2(0.f, 128.f), Vec2(64.f, 64.f), Vec2(64.f, 0.f), 0.2f, 4);
 	GetAnimator()->CreateAnimation(L"WALK_DOWN", pTex, Vec2(0.f, 0.f), Vec2(64.f, 64.f), Vec2(64.f, 0.f), 0.2f, 4);
 	GetAnimator()->Play(L"IDLE", true);
+
+	CreateGravity();
 
 }
 

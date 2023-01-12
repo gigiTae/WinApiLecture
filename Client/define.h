@@ -24,6 +24,7 @@ enum class GROUP_TYPE
 {
 	DEFALUT,     
 	TILE,
+	GROUND,
 	MONSTER,	 
 	PLAYER,		 
 	PROJ_PLAYER,  //플레이어 투사체
