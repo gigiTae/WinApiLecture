@@ -140,6 +140,15 @@
     <Filter Include="Engine\04.Object\Ground">
       <UniqueIdentifier>{c30b3747-a6c8-455e-a961-1c1b30c56571}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04.Object\UI\FixedUI">
+      <UniqueIdentifier>{eefe4d48-fa44-47a7-a419-9003d8745d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05.Scene\Scene_PlayGame">
+      <UniqueIdentifier>{d431ad15-14d6-476a-aee7-ff176dd20318}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05.Scene\SCene_Option">
+      <UniqueIdentifier>{6d3392cc-b7aa-4c78-971a-fc19cb56b088}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -275,6 +284,15 @@
     <ClInclude Include="CGround.h">
       <Filter>Engine\04.Object\Ground</Filter>
     </ClInclude>
+    <ClInclude Include="CFixedUI.h">
+      <Filter>Engine\04.Object\UI\FixedUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_PlayGame.h">
+      <Filter>Engine\05.Scene\Scene_PlayGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneOption.h">
+      <Filter>Engine\05.Scene\SCene_Option</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -404,6 +422,15 @@
     </ClCompile>
     <ClCompile Include="CGround.cpp">
       <Filter>Engine\04.Object\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="CFixedUI.cpp">
+      <Filter>Engine\04.Object\UI\FixedUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_PlayGame.cpp">
+      <Filter>Engine\05.Scene\Scene_PlayGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneOption.cpp">
+      <Filter>Engine\05.Scene\SCene_Option</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 
 #include "CkeyMgr.h"
 #include "CCamera.h"
+#include "CCore.h"
 
 #include "SelectGDI.h"
 
@@ -152,5 +153,6 @@ void CUI::MouseLbtnUp()
 
 void CUI::MouseLbtnClicked()
 {
+
 }
 

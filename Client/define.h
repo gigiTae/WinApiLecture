@@ -38,8 +38,8 @@ enum class SCENE_TYPE
 {
 	TOOL,
 	START,
-	STAGE_01,
-	STAGE_02,
+	PLAYGMAE,
+	OPTION,
 
 	END,
 };

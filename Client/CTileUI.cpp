@@ -14,7 +14,7 @@ CTileUI::CTileUI()
 	, m_pTex(nullptr)
 	, m_pScene(nullptr)
 {
-	m_pTex = CResMgr::GetInst()->LoadTexture(L"NewTileTex", L"texture\\NewTile.bmp");
+	m_pTex = CResMgr::GetInst()->LoadTexture(L"TileTex", L"texture\\GameTile.bmp");
 }
 
 CTileUI::~CTileUI()
