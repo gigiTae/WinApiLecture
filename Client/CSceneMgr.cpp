@@ -31,17 +31,11 @@ void CSceneMgr::init()
 	m_arrScene[(UINT)SCENE_TYPE::START] = new CScene_Start;
 	m_arrScene[(UINT)SCENE_TYPE::START]->SetName(L"Start Scene");
 
-	m_arrScene[(UINT)SCENE_TYPE::TOOL] = new CScene_Tool;
-	m_arrScene[(UINT)SCENE_TYPE::TOOL]->SetName(L"Tool Scene");
-
 	m_arrScene[(UINT)SCENE_TYPE::PLAYGMAE] = new CScene_PlayGame;
 	m_arrScene[(UINT)SCENE_TYPE::PLAYGMAE]->SetName(L"PlayGame Scene");
 
-	m_arrScene[(UINT)SCENE_TYPE::OPTION] = new CSceneOption;
-	m_arrScene[(UINT)SCENE_TYPE::OPTION]->SetName(L"Option Scene");
-
 	// ÇöÀç ¾À ÁöÁ¤
-	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::TOOL];
+	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::START];
 	m_pCurScene->Enter();
 }
 
